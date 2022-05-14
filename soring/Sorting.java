@@ -18,13 +18,31 @@ public class Sorting {
     }
   }
 
+  void insertionSort() {
+    for (int i = 1; i < a.length; i++) {
+      int temp = a[i];
+      int j = i - 1;
+
+      while (j >= 0 && temp < a[j]) {
+        a[j + 1] = a[j];
+        j--;
+      }
+      a[j + 1] = temp;
+    }
+
+    for (int i : a) {
+      System.out.println(i);
+    }
+  }
+
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Sorting sort = new Sorting();
     while (true) {
       System.out.println("Please enter your choice");
       System.out.println("1- Exit the program");
-      System.out.println("2- Selection Sort");
+      System.out.println("2- Bubble Sort");
+      System.out.println("3- Insertion Sort");
       int ch = sc.nextInt();
 
       switch (ch) {
@@ -34,7 +52,12 @@ public class Sorting {
           System.exit(0);
           break;
         case 2:
+          System.out.println();
           sort.bubbleSort();
+          break;
+        case 3:
+          System.out.println();
+          sort.insertionSort();
           break;
 
         default:
