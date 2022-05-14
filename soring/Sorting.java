@@ -35,6 +35,22 @@ public class Sorting {
     }
   }
 
+  void selectionSort() {
+    for (int i = 0; i < a.length -1; i++) {
+      int min = i;
+      for (int j = i + 1; j < a.length; j++) {
+        if (a[min] > a[j]) {
+          min = j;
+        }
+      }
+      int temp = a[min];
+      a[min] = a[i];
+      a[i] = temp;
+    }
+    for (int i : a) {
+      System.out.println(i);
+    }
+  }
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
     Sorting sort = new Sorting();
@@ -43,6 +59,7 @@ public class Sorting {
       System.out.println("1- Exit the program");
       System.out.println("2- Bubble Sort");
       System.out.println("3- Insertion Sort");
+      System.out.println("4- Selection Sort");
       int ch = sc.nextInt();
 
       switch (ch) {
@@ -58,6 +75,10 @@ public class Sorting {
         case 3:
           System.out.println();
           sort.insertionSort();
+          break;
+        case 4:
+          System.out.println();
+          sort.selectionSort();
           break;
 
         default:
