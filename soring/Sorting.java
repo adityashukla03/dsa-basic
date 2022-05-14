@@ -3,19 +3,28 @@ import java.util.Scanner;
 public class Sorting {
   int[] a = {5,4,4,3,2,1};
 
+  void swap(int index1, int index2) {
+    int temp = a[index1];
+    a[index1] = a[index2];
+    a[index2] = temp;
+  }
+
+  void displayArray() {
+    for (int i : a) {
+      System.out.print(i + ", ");
+    }
+    System.out.println();
+  }
+
   void bubbleSort() {
     for (int i = 0; i < a.length - 1; i++) {
       for (int j = i + 1; j < a.length; j++) {
         if (a[i] > a[j]) {
-          int temp = a[j];
-          a[j] = a[i];
-          a[i] = temp;
+          swap(i, j);
         }
       }
     }
-    for (int i : a) {
-      System.out.println(i);
-    }
+    displayArray();
   }
 
   void insertionSort() {
@@ -30,26 +39,20 @@ public class Sorting {
       a[j + 1] = temp;
     }
 
-    for (int i : a) {
-      System.out.println(i);
-    }
+    displayArray();
   }
 
   void selectionSort() {
-    for (int i = 0; i < a.length -1; i++) {
+    for (int i = 0; i < a.length - 1; i++) {
       int min = i;
       for (int j = i + 1; j < a.length; j++) {
         if (a[min] > a[j]) {
           min = j;
         }
       }
-      int temp = a[min];
-      a[min] = a[i];
-      a[i] = temp;
+      swap(min, i);
     }
-    for (int i : a) {
-      System.out.println(i);
-    }
+    displayArray();
   }
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
