@@ -139,6 +139,25 @@ class LinkedList {
     displayLinkedList();
   }
 
+  void deleteNode(int position) {
+    if (head == null) {
+      return;
+    }
+    if (head.next == null && position == 1) {
+      displayLinkedList();
+      return;
+    }
+    int count = 0;
+    Node currentNode = head;
+    Node previousNode = head;
+    while (currentNode != null && count != position) {
+      count++;
+      previousNode = currentNode;
+      currentNode = currentNode.next;
+    }
+    previousNode.next = currentNode.next;
+  }
+
   public static void main(String ar[]) {
     LinkedList list = new LinkedList();
     while (true) {
@@ -151,7 +170,8 @@ class LinkedList {
       System.out.println("6- Find the middle element");
       System.out.println("7- Find the middle element faster");
       System.out.println("8- Reverse the link list");
-      System.out.println("9- Exit the program\n");
+      System.out.println("9- Delete node");
+      System.out.println("10- Exit the program\n");
 
       Scanner sc = new Scanner(System.in);
       int choice = sc.nextInt();
@@ -169,7 +189,6 @@ class LinkedList {
           System.out.println("Please enter the element to delete: ");
           data = sc.nextInt();
           list.removeNode(data);
-          list.displayLinkedList();
           break;
         case 4:
           System.out.println("Length of linked list: " + list.length() + "\n");
@@ -193,6 +212,9 @@ class LinkedList {
           list.reversedLinkList();
           break;
         case 9:
+          list.deleteNode(2);
+          break;
+        case 10:
           System.out.println("Exiting the program....");
           sc.close();
           System.exit(0);
