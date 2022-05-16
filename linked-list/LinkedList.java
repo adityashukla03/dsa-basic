@@ -50,8 +50,14 @@ class LinkedList {
       previousNode = currentNode;
       currentNode = currentNode.next;
     }
-    previousNode.next = currentNode.next;
-    System.out.println(data + " is deleted successfully");
+    if (currentNode != null) {
+      previousNode.next = currentNode.next;
+      System.out.println(data + " is deleted successfully");
+      displayLinkedList();
+
+    } else {
+      System.out.println(data + " is not found in the list");
+    }
   }
 
   int findMiddleElement(LinkedList list) {
