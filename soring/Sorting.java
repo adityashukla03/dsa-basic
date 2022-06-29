@@ -59,7 +59,7 @@ public class Sorting {
     int pivot = a[(l + h) / 2];
     int i = l;
     int j = h;
-    System.out.println(i +" "+ j);
+
     while (i < j) {
       while (a[i] <= pivot) {
         i++;
@@ -71,7 +71,7 @@ public class Sorting {
         swap(i, j);
       }
     }
-    swap(i, j);
+    swap(j, (l+h)/2);
     return j;
   }
 
